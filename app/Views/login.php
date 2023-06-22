@@ -65,32 +65,24 @@ emailInput.addEventListener('input', function() {
           <!-- Password input -->
           <div class="form-outline mb-3">
           <form action="" class="form otp-form">
-  <input type="password"  id="form3Example4" class="form-control form-control-lg"
+  <input type="password" name = "email" id="form3Example4" class="form-control form-control-lg"
     placeholder="Enter OTP" /> <!-- input type = password/number -->
-    <!-- <span class="otpError"></span> -->
+    <span class="otpError"></span>
   <!--<label class="form-label" for="form3Example4">Password</label>-->
   <small id="passwordHelp" class="form-text">
     <i class="fas fa-info-circle"></i> Use the code sent to your email
   </small>
 </div>
 <script>
+    const passwordInput = document.getElementById('form3Example4');
   const passwordHelpText = document.getElementById('passwordHelp');
 passwordHelpText.style.color = 'blue';
 </script>
 
-          <!--<div class="d-flex justify-content-between align-items-center">-->
-            <!-- Checkbox -->
-           <!-- <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-              <label class="form-check-label" for="form2Example3">
-                Remember me
-              </label>-->
-           <!-- </div>
-            <a href="#!" class="text-body">Forgot password?</a>
-          </div>-->
+
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <a href="http://localhost:8080/homepage" class="btn btn-primary btn-lg"
+            <a href="http://localhost:8080/homepage" name= "submitForm" class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</a>  <!-- otp-submit-->
           </div>
             <!--<p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"

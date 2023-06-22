@@ -1,5 +1,5 @@
-const emailContainer = document.querySelector('.col-md-8 col-lg-6 col-xl-4 offset-xl-1')
-const otpContainer = document.querySelector('.form-outline mb-3')
+const emailContainer = document.querySelector('.email-container')
+const otpContainer = document.querySelector('.otp-container')
 const submitOtp = document.querySelector('.otp-submit')
 const submitEmail = document.querySelector('.email-submit')
 const emailError = document.querySelector('.email-error')
@@ -24,7 +24,7 @@ fetch('/backend/login.php', {
         emailContainer.style.display='none'
     }
     else
-    error(emailError, "You are not eligible to vote")
+    error(emailError, "Please enter a valid school email address ending with .edu")
 })
 
 })
@@ -46,7 +46,7 @@ submitOtp.addEventListener('click', (e)=>{
     .then(res=>res.json())
     .then(data=>{
         if(data.status =='success'){
-           window.location.replace("/app/Views/homepage.php")
+           window.location.replace("/frontend/dashboard.html")
         }
         else
         error(otpError, "Incorrect OTP provided")

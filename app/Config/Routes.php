@@ -18,7 +18,7 @@ $routes->set404Override();
 $routes->get('login', 'Login::index');
 $routes->get('landing', 'landing::index');
 $routes->get('homepage', 'homepage::index');
-$routes->get('login2', 'login2::index');
+$routes->get('auth', 'auth::index');
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).

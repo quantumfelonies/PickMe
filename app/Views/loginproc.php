@@ -13,11 +13,11 @@ session_start();
 // request from client with email address
 if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['email'])){
 $email = $conn->real_escape_string($_POST['email']);
-$result = $conn->query("select * from tbl_student where std.email = '$email';");
+$result = $conn->query("select * from tbl_students where std.email = '$email';");
 if($result->num_rows){
     $_SESSION['EMAIL']=$email;
     $otp = rand(1111, 9999);
-    $conn->query("update tbl_student set otp = $otp where std.email = '$email';");
+    $conn->query("update tbl_students set otp = $otp where std.email = '$email';");
    //-- add set otp to the table 
     sendEmail($email, $otp);
     echo json_encode(['status' => 'success']);
@@ -31,7 +31,7 @@ exit();
 if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['otp'])){
     $userProvidedOtp = $conn->real_escape_string($_POST['otp']);
     $email = $_SESSION['EMAIL'];
-    $result = $conn->query("select * from tbl_student where otp = $userProvidedOtp and std.email = '$email' ;");
+    $result = $conn->query("select * from tbl_students where otp = $userProvidedOtp and std.email = '$email' ;");
     if($result->num_rows){
         $_SESSION['LOGGEDIN']=true;
         echo json_encode(['status' => 'success']); 
@@ -73,7 +73,7 @@ $mail->Password = 'YOUR_PASSWORD';
 $mail->SMTPAuth=true;
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
-$mail->setFrom(' ', 'StrathElectionAdmin'); //add email
+$mail->setFrom('aelection269@gmail.com', 'election admin');
 $mail->addAddress($email);
 $mail->isHTML(true);
 $mail->Subject='Your OTP Code';
