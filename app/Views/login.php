@@ -40,10 +40,11 @@
           <!-- Email input -->
           <div class="form-outline mb-4">
   <input type="email" id="form3Example3" class="form-control form-control-lg"
-    placeholder="Enter your school email address" />
+    placeholder="Enter your school email address" required/>
+    <span class="emailError"></span>
  <!-- <label class="form-label" for="form3Example3">Email address</label>-->
-  <small id="emailHelp" class="form-text" style="color: blue;"><i class="fas fa-info-circle"></i> Please enter a valid school email address ending with .edu</small>
-</div>
+  <small id="emailHelp" class="form-text" style="color: blue;"><i class="fas fa-info-circle"></i> Please enter a valid school email address ending with @strathmore.edu</small>
+    </div>
 
 <script>
   const emailInput = document.getElementById('form3Example3');
@@ -51,7 +52,7 @@ const emailHelpText = document.getElementById('emailHelp');
 
 emailInput.addEventListener('input', function() {
   const email = emailInput.value.trim();
-  if (email.endsWith('.edu')) {
+  if (email.endsWith('@strathmore.edu')) {
     emailInput.setCustomValidity('');
     emailHelpText.style.color = 'blue';
   } else {
@@ -63,11 +64,13 @@ emailInput.addEventListener('input', function() {
 
           <!-- Password input -->
           <div class="form-outline mb-3">
-  <input type="password" id="form3Example4" class="form-control form-control-lg"
-    placeholder="Enter password" />
+          <form action="" class="form otp-form">
+  <input type="password"  id="form3Example4" class="form-control form-control-lg"
+    placeholder="Enter OTP" /> <!-- input type = password/number -->
+    <!-- <span class="otpError"></span> -->
   <!--<label class="form-label" for="form3Example4">Password</label>-->
   <small id="passwordHelp" class="form-text">
-    <i class="fas fa-info-circle"></i> Use the password sent to your email
+    <i class="fas fa-info-circle"></i> Use the code sent to your email
   </small>
 </div>
 <script>
@@ -87,9 +90,9 @@ passwordHelpText.style.color = 'blue';
           </div>-->
 
           <div class="text-center text-lg-start mt-4 pt-2">
-  <a href="http://localhost:8080/homepage" class="btn btn-primary btn-lg"
-    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</a>
-</div>
+            <a href="http://localhost:8080/homepage" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</a>  <!-- otp-submit-->
+          </div>
             <!--<p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
                 class="link-danger">Register</a></p>
           </div>-->
@@ -98,6 +101,7 @@ passwordHelpText.style.color = 'blue';
       </div>
     </div>
   </div>
+  <script src="script.js"></script> 
   <!--<div
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">-->
     <!-- Copyright -->
@@ -177,3 +181,4 @@ passwordHelpText.style.color = 'blue';
 });
 </script>-->
 </body>
+</html>

@@ -40,7 +40,7 @@
           <!-- Email input -->
           <div class="form-outline mb-4">
   <input type="email" id="form3Example3" class="form-control form-control-lg"
-    placeholder="Enter your school email address" reqired />
+    placeholder="Enter your school email address" required />
  <!-- <label class="form-label" for="form3Example3">Email address</label>-->
   <small id="emailHelp" class="form-text" style="color: blue;"><i class="fas fa-info-circle"></i> Please enter a valid school email address ending with .edu</small>
 </div>
@@ -50,7 +50,7 @@ const emailHelpText = document.getElementById('emailHelp');
 
 emailInput.addEventListener('input', function() {
   const email = emailInput.value.trim();
-  if (email.endsWith('.edu')) {
+  if (email.endsWith('@strathmore.edu')) {
     emailInput.setCustomValidity('');
     emailHelpText.style.color = 'blue';
   } else {

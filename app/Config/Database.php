@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '',
+        'password' => 'Eroclaz1000',
         'database' => 'pickme',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
