@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\adminloginprocess;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -15,10 +17,18 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
+
 $routes->get('login', 'Login::index');
 $routes->get('landing', 'landing::index');
 $routes->get('homepage', 'homepage::index');
 $routes->get('auth', 'auth::index');
+$routes->get('adminhome', 'adminhome::index');
+$routes->get('/adminlogin', 'adminlogin::index');
+
+
+
+$routes->post('/adminloginprocess', 'adminloginprocess::index');
+
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).

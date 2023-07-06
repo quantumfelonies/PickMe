@@ -13,13 +13,13 @@ session_start();
 // request from client with email address
 if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['email'])){
 $email = $conn->real_escape_string($_POST['email']);
-$result = $conn->query("select * from tbl_students where std.email = '$email';");
+$result = $conn->query("select * from tbl_student where role_id = '2' AND email = '$email';");
 if($result->num_rows){
     $_SESSION['EMAIL']=$email;
-    $otp = rand(1111, 9999);
-    $conn->query("update tbl_students set otp = $otp where std.email = '$email';");
+    $password = rand(1111, 9999);
+    $conn->query("update tbl_student set password = $password where email = '$email';");
    //-- add set otp to the table 
-    sendEmail($email, $otp);
+    sendEmail($email, $password);
     echo json_encode(['status' => 'success']);
 }
 else
@@ -28,10 +28,10 @@ exit();
 }
 
 // request from client with OTP code
-if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['otp'])){
-    $userProvidedOtp = $conn->real_escape_string($_POST['otp']);
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['password'])){
+    $userProvidedOtp = $conn->real_escape_string($_POST['password']);
     $email = $_SESSION['EMAIL'];
-    $result = $conn->query("select * from tbl_students where otp = $userProvidedOtp and std.email = '$email' ;");
+    $result = $conn->query("select * from tbl_student where password = $userProvidedOtp and email = '$email' ;");
     if($result->num_rows){
         $_SESSION['LOGGEDIN']=true;
         echo json_encode(['status' => 'success']); 
@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
 
 
 // function sendEmail logic
-function sendEmail($email, $otp){
+function sendEmail($email, $password){
    
 $mail = new PHPMailer(true);
 
@@ -73,11 +73,11 @@ $mail->Password = 'YOUR_PASSWORD';
 $mail->SMTPAuth=true;
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
-$mail->setFrom('aelection269@gmail.com', 'election admin');
+$mail->setFrom('charis.orony@strathmore.edu', 'election admin');
 $mail->addAddress($email);
 $mail->isHTML(true);
 $mail->Subject='Your OTP Code';
-$mail->Body = "Here is your OTP code: <br> $otp";
+$mail->Body = "Here is your OTP code: <br> $password";
 $mail->send();
 }catch(Exception $e)
     {echo $e;}
